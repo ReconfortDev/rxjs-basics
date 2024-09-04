@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SearchComponent} from "../components/search/search.component";
 import {BodyComponent} from "../components/body/body.component";
-import {DataService} from "../services/data/data.service";
 import {map, Observable} from "rxjs";
 import {PostModel, UserModel} from "../models";
 import {AsyncPipe, NgForOf, NgOptimizedImage} from "@angular/common";
@@ -28,8 +27,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     const searchResults$ = this.searchService.getSearchResults();
-    // this.users$ = this.dataService.getUsers();
-    // this.posts$ = this.dataService.getPosts();
     this.users$ = searchResults$.pipe(map(results => results.users));
     this.posts$ = searchResults$.pipe(map(results => results.posts));
   }
