@@ -32,7 +32,7 @@ This project demonstrates the basic usage of RxJS operators and includes example
 
 ## Live Link 
 
-check live App here [SearchBox](https://angular.dev/tools/cli)
+check live App here [SearchBox](https://amaliseacrch.netlify.app/)
   
 
 ### 1. Implement Debounced Search
