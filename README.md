@@ -42,7 +42,7 @@ This project demonstrates the basic usage of RxJS operators such as `of`, `from`
 
 Run `ng serve` for a development server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code Scaffolding
+## Code Sca ffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
