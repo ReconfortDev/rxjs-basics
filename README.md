@@ -1,57 +1,83 @@
-Here’s a README that corresponds to the examples you provided for `of`, `from`, `interval`, `concat`, and error handling in RxJS.
+Here's a revised version of your README that includes the new labs and summarizes the content for better readability:
 
 ---
 
 # RxJS Basics
 
-This project demonstrates the basic usage of RxJS operators such as `of`, `from`, `interval`, `concat`, and error handling in an Angular application.
+This project demonstrates the basic usage of RxJS operators and includes examples of debounced search, data combination, error handling, and loading states in an Angular application.
 
-## Examples in This Project
+## Labs 1
 
 ### 1. Using `of` Operator
-
-- **Description**: The `of` operator creates an observable that emits a sequence of values. This example demonstrates how to subscribe to an observable that emits numbers and logs each value to the console, along with a completion message.
-
-- **Implementation**: See the `exampleOf()` method in `app.component.ts`.
+- **Description**: Creates an observable that emits a sequence of values.
+- **Implementation**: See `exampleOf()` in `app.component.ts`.
 
 ### 2. Working with `from` Operator
-
-- **Description**: The `from` operator creates an observable from an array or other iterable objects. This example demonstrates how to create an observable from an array of colors and log each emitted color to the console.
-
-- **Implementation**: See the `exampleFrom()` method in `app.component.ts`.
+- **Description**: Creates an observable from an array or iterable object.
+- **Implementation**: See `exampleFrom()` in `app.component.ts`.
 
 ### 3. Using `interval` Operator
-
-- **Description**: The `interval` operator creates an observable that emits values at regular intervals. This example demonstrates how to create an observable that emits a value every second and limits the emissions to 5 values using the `take` operator.
-
-- **Implementation**: See the `exampleInterval()` method in `app.component.ts`.
+- **Description**: Emits values at regular intervals.
+- **Implementation**: See `exampleInterval()` in `app.component.ts`.
 
 ### 4. Combining Observables with `concat`
-
-- **Description**: The `concat` operator is used to sequentially combine multiple observables. This example demonstrates how to concatenate an observable of numbers with an observable of colors and log all emitted values to the console.
-
-- **Implementation**: See the `exampleCombine()` method in `app.component.ts`.
+- **Description**: Sequentially combines multiple observables.
+- **Implementation**: See `exampleCombine()` in `app.component.ts`.
 
 ### 5. Error Handling in Observables
+- **Description**: Demonstrates error handling using the `catchError` operator.
+- **Implementation**: See `exampleErrorHandling()` in `app.component.ts`.
 
-- **Description**: This example demonstrates how to handle errors in an observable. An observable emits a sequence of values and then throws an error. The `catchError` operator is used to catch the error and provide a fallback observable.
+## Labs 2
 
-- **Implementation**: See the `exampleErrorHandling()` method in `app.component.ts`.
+## Live Link 
+
+check live App here [SearchBox](https://angular.dev/tools/cli)
+  
+
+### 1. Implement Debounced Search
+- **Description**: Creates an observable from the search input field, delays emissions, filters short terms, simulates an API call, and displays results.
+- **Implementation**:
+  - Create observable for search input.
+  - Use `debounceTime` to delay emissions.
+  - Filter out empty or short terms.
+  - Simulate API calls with `switchMap` and `of`.
+  - Display search results.
+
+### 2. Combine Data from Multiple Endpoints
+- **Description**: Combines data from multiple sources and handles errors and loading states.
+- **Implementation**:
+  - Create observables for different data sources (e.g., user details and posts).
+  - Use `combineLatest` to merge results.
+  - Transform combined data for display.
+  - Handle errors and display loading states.
+
+### 3. Error Handling
+- **Description**: Includes error handling for search and data combination processes, and displays appropriate error messages.
+- **Implementation**:
+  - Handle errors in observables.
+  - Show error messages to users.
+
+### 4. Loading States
+- **Description**: Manages loading indicators for both search and data combination processes.
+- **Implementation**:
+  - Implement and display loading indicators.
+  - Reflect loading states in the UI.
 
 ## Development Server
 
-Run `ng serve` for a development server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` for a development server. Navigate to `http://localhost:4200/` to view the application. It will automatically reload on file changes.
 
-## Code Sca ffolding
+## Code Scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Use `ng generate component component-name` to generate new components. Other Angular CLI commands can be used for generating directives, pipes, services, and more.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `ng build` to build the project. Build artifacts will be stored in the `dist/` directory.
 
 ## Further Help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+For more help with Angular CLI, use `ng help` or check the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
 
 ---
