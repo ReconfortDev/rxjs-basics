@@ -1,35 +1,38 @@
 import {Component} from '@angular/core';
 import {RouterOutlet} from '@angular/router';
 import {catchError, concat, concatMap, from, interval, of, take, throwError} from "rxjs";
-import {SearchComponent} from "./components/search/search.component";
-import {HomeComponent} from "./home/home.component";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SearchComponent, HomeComponent],
+  imports: [RouterOutlet, NgForOf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'rxjsBasics';
+  title = 'rxjsBasics'
+
+  numberValues: number[] = [];
+  colorValues: string[] = [];
+  combinedValues: any[] = [];
+  intervalValues: number[] = [];
+  errorHandlingResult: string | null = null;
+
 
   constructor() {
-
     //1. create and subscribe from observable with of operator
-    // Use when you want to emit a series of values sequentially.
     const numberObservable = of(1, 2, 3, 4, 5);
     numberObservable.subscribe({
-      next: value => console.log('of next:', value),
+      next: value => this.numberValues.push(value),
       complete: () => console.log('of complete')
     });
 
     // 2. Working with 'from'
-    // Converts an array, promise, or other iterable objects into an observable stream.
     const favoriteColors = ['red', 'blue', 'green'];
     const colorObservable = from(favoriteColors);
     colorObservable.subscribe({
-      next: color => console.log('from next:', color),
+      next: color => this.colorValues.push(color),
       complete: () => console.log('from complete')
     });
 
@@ -41,10 +44,9 @@ export class AppComponent {
     });
 
     //3. Using interval
-    // Emits an increasing number at regular intervals (e.g., every second).
     const intervalObservable = interval(1000).pipe(take(5));
     intervalObservable.subscribe({
-      next: value => console.log('interval next:', value, 'timestamp:', new Date()),
+      next: value => this.intervalValues.push(value),
       complete: () => console.log('interval complete')
     });
 
@@ -53,11 +55,9 @@ export class AppComponent {
     const arrayObservable = from([100, 200, 300]);
     const combinedObservable = concat(numberSeq, arrayObservable);
     combinedObservable.subscribe({
-      next: value => console.log('combined next:', value),
+      next: value => this.combinedValues.push(value),
       complete: () => console.log('combined complete')
     });
-
-
 
     // 5. Error Handling
     const errorObservable = of(1, 2, 3).pipe(
@@ -69,6 +69,7 @@ export class AppComponent {
       }),
       catchError(err => {
         console.log('Error caught:', err.message);
+        this.errorHandlingResult = 'Error handled and replaced with a new value';
         return of('Error handled and replaced with a new value');
       })
     );
@@ -78,5 +79,4 @@ export class AppComponent {
       complete: () => console.log('error handling complete')
     });
   }
-
 }
